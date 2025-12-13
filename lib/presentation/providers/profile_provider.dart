@@ -29,4 +29,8 @@ class ProfileProvider extends ChangeNotifier {
     profile = p;
     notifyListeners();
   }
+
+  Future<UserProfile?> getById(String uid) {
+    return _repo.getProfile(uid);
+  }
 }

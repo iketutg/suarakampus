@@ -18,6 +18,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final _name = TextEditingController();
   final _bio = TextEditingController();
+  final _nim = TextEditingController();
+  final _major = TextEditingController();
+  final _batch = TextEditingController();
   Uint8List? _photoBytes;
   String? _photoName;
 
@@ -47,8 +50,11 @@ class _ProfilePageState extends State<ProfilePage> {
               builder: (context, snap) {
                 final p = context.watch<ProfileProvider>().profile;
                 if (p != null) {
-                  _name.text = p.displayName;
+                  _name.text = p.fullName;
                   _bio.text = p.bio ?? '';
+                  _nim.text = p.nim ?? '';
+                  _major.text = p.major ?? '';
+                  _batch.text = p.batch ?? '';
                 }
                 return Padding(
                   padding: const EdgeInsets.all(16),
@@ -56,6 +62,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       TextField(controller: _name, decoration: const InputDecoration(labelText: 'Nama')),
                       TextField(controller: _bio, decoration: const InputDecoration(labelText: 'Bio')),
+                      TextField(controller: _nim, decoration: const InputDecoration(labelText: 'NIM')),
+                      TextField(controller: _major, decoration: const InputDecoration(labelText: 'Jurusan')),
+                      TextField(controller: _batch, decoration: const InputDecoration(labelText: 'Angkatan')),
                       const SizedBox(height: 8),
                       Row(
                         children: [
@@ -77,9 +86,13 @@ class _ProfilePageState extends State<ProfilePage> {
                           final updated = UserProfile(
                             uid: uid,
                             email: p?.email ?? '',
-                            displayName: _name.text.trim(),
+                            fullName: _name.text.trim(),
                             photoUrl: photoUrl,
                             bio: _bio.text.trim(),
+                            nim: _nim.text.trim().isNotEmpty ? _nim.text.trim() : null,
+                            major: _major.text.trim().isNotEmpty ? _major.text.trim() : null,
+                            batch: _batch.text.trim().isNotEmpty ? _batch.text.trim() : null,
+                            fcmToken: p?.fcmToken,
                             createdAt: p?.createdAt ?? now,
                             updatedAt: now,
                           );

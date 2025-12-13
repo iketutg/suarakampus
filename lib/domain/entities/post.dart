@@ -2,42 +2,33 @@ class Post {
   final String id;
   final String userId;
   final String content;
-  final String? imageUrl;
-  final int likeCount;
-  final int commentCount;
+  final String? photoUrl;
   final DateTime createdAt;
 
   Post({
     required this.id,
     required this.userId,
     required this.content,
-    this.imageUrl,
-    required this.likeCount,
-    required this.commentCount,
+    this.photoUrl,
     required this.createdAt,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'userId': userId,
-      'content': content,
-      'imageUrl': imageUrl,
-      'likeCount': likeCount,
-      'commentCount': commentCount,
-      'createdAt': createdAt.toUtc().millisecondsSinceEpoch,
-    };
-  }
-
   factory Post.fromMap(Map<String, dynamic> map, String id) {
+    final created = map['createdAt'];
+    DateTime createdAt;
+    if (created is int) {
+      createdAt = DateTime.fromMillisecondsSinceEpoch(created, isUtc: true).toLocal();
+    } else if (created is DateTime) {
+      createdAt = created;
+    } else {
+      createdAt = DateTime.now();
+    }
     return Post(
       id: id,
-      userId: map['userId'] as String,
+      userId: map['userId'] as String? ?? '',
       content: map['content'] as String? ?? '',
-      imageUrl: map['imageUrl'] as String?,
-      likeCount: (map['likeCount'] ?? 0) as int,
-      commentCount: (map['commentCount'] ?? 0) as int,
-      createdAt: DateTime.fromMillisecondsSinceEpoch((map['createdAt'] ?? 0) as int, isUtc: true).toLocal(),
+      photoUrl: map['photoUrl'] as String?,
+      createdAt: createdAt,
     );
   }
 }
