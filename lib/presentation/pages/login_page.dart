@@ -21,9 +21,10 @@ class _LoginPageState extends State<LoginPage> {
     final auth = context.watch<AuthProvider>();
     return Scaffold(
       appBar: AppBar(title: const Text('Masuk')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
           children: [
             TextField(controller: _email, decoration: const InputDecoration(labelText: 'Email')),
             TextField(controller: _password, decoration: const InputDecoration(labelText: 'Password'), obscureText: true),
@@ -48,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             if (auth.error != null) Text(auth.error!, style: const TextStyle(color: Colors.red)),
           ],
+          ),
         ),
       ),
     );

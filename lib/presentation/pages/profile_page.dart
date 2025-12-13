@@ -56,9 +56,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   _major.text = p.major ?? '';
                   _batch.text = p.batch ?? '';
                 }
-                return Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
+                return SafeArea(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
                     children: [
                       TextField(controller: _name, decoration: const InputDecoration(labelText: 'Nama')),
                       TextField(controller: _bio, decoration: const InputDecoration(labelText: 'Bio')),
@@ -103,6 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   ),
+                ),
                 );
               },
             ),
