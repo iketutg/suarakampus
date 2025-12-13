@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1017039354510",
+    "project_id": "socialcampus-3ac96",
+    "storage_bucket": "socialcampus-3ac96.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017039354510:android:43a7797d44e4c8f56467df",
+        "android_client_info": {
+          "package_name": "id.globalinstitude.suarakampus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqeJZX5zoDQygL5ReNRweY3eUNyZsuawo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017039354510:android:ef79f1320f5444326467df",
+        "android_client_info": {
+          "package_name": "id.globalinstitude.suarakampus.suarakampus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqeJZX5zoDQygL5ReNRweY3eUNyZsuawo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
