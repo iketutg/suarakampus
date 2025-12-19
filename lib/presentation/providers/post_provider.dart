@@ -13,6 +13,8 @@ class PostProvider extends ChangeNotifier {
     _sub = _repo.posts().listen((data) {
       posts = data;
       notifyListeners();
+    }, onError: (e) {
+      debugPrint('Error fetching posts: $e');
     });
   }
 
